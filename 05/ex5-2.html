@@ -30,7 +30,7 @@
         }
 
         async function doSelect() {
-            var sql = "select * from Tweets";
+            var sql = "select * from Tweets order by time desc";
             var objects = await osql.connect(sql);
             console.log(objects);
             var html = '';
@@ -44,13 +44,12 @@
 
 
         }
+
         {
             $().ready(function () {
-                doSelect();
+                setInterval(doSelect, 2000);
+
             });
-            async function doTweets() {
-                document.getElementById("result").innerHTML = ""
-            }
         }
     </script>
 
