@@ -30,7 +30,7 @@
         }
 
         async function doSelect() {
-            var sql = "select * from Tweets order by time desc";
+            var sql = "select * from Tweets";
             var objects = await osql.connect(sql);
             console.log(objects);
             var html = '';
@@ -43,6 +43,14 @@
             document.getElementById('result').innerHTML = html;
 
 
+        }
+        {
+            $().ready(function () {
+                doSelect();
+            });
+            async function doTweets() {
+                document.getElementById("result").innerHTML = ""
+            }
         }
     </script>
 
