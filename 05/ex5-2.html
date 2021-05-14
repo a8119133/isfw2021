@@ -25,6 +25,25 @@
 
             document.getElementById('result').innerHTML = "tweetしました";
         }
+        function button2Pressed() {
+            doSelect();
+        }
+
+        async function doSelect() {
+            var sql = "select * from Tweets order by time desc";
+            var objects = await osql.connect(sql);
+            console.log(objects);
+            var html = '';
+            html = html + '<ul>';
+            for (var i = 0; i < objects.length; i++) {
+                var object = objects[i];
+                html = html + '<li>' + object.tweet + "," + object.id + "," + object.name + "," + object.time + '</li>';
+            }
+            html = html + '</ul>';
+            document.getElementById('result').innerHTML = html;
+
+
+        }
     </script>
 
 </head>
@@ -36,6 +55,8 @@
     <br>
     tweet:<input id="tf2" type="textfield">
     <button onclick="button1Pressed()">tweet</button>
+    <input id="search" type="textfield">
+    <button onclick="button2Pressed()">検索</button>
     <br>
     <p id="result"></p>
 </body>
