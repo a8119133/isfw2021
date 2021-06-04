@@ -28,6 +28,14 @@
 
 
         }
+        function button2Pressed() {
+            var userid = sessionStorage.getItem('userid');
+            console.log(userid);
+            var html = "";
+            html = "tweet.html?userid=" + userid;
+            location.href = html;
+        }
+
     </script>
 
 
@@ -36,7 +44,12 @@
 <body>
     <h1>ユーザトップ</h1>
     <p id="welcome"></p>
-    <button onclick="buttonPressed()">ユーザー情報変更</button>
+    <br>
+    ユーザー情報変更
+    <button onclick="buttonPressed()">○</button>
+    <br>
+    ユーザー情報変更
+    <button onclick="button2Pressed()">○</button>
     <hr>
 
 </body>
